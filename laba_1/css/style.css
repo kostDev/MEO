@@ -1,0 +1,16 @@
+table{
+	margin-left: 5%;
+	text-align: center;
+}
+td{
+	padding: 2px;
+
+}
+input{
+	text-align: center;
+}
+.form-inline{
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
