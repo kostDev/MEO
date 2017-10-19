@@ -1,42 +1,36 @@
-export class Table{
-    // new element which will have tab obj
-    table = null;
+class Table{
 
     constructor(className, rowNum, cellNum){
         this.className = className;
         this.rowNum = rowNum;
         this.cellNum = cellNum;
+        this.valueArr = [];
+        this.table = document.createElement('table');
+        this.state = false;
     }
 
-    create(){
-        table = document.createElement('table');
-        table.setAttribute('class', this.className);
+    create (){
+        this.table.setAttribute('class', this.className);
         for (let rowNum = 0; rowNum < this.rowNum; rowNum++) {
-            let row = table.insertRow(rowNum);
+            let row = this.table.insertRow(rowNum);
             for (let cellNum = 0; cellNum < this.cellNum; cellNum++) {
                 let cell = row.insertCell(cellNum);
-                cell.innerHTML = fillCell(rowNum,cellNum,alterCount);
+                // max 20 min 0
+                let number = Math.floor(Math.random() * (20 - 0 + 1)) + 0;
+                cell.innerHTML = '<input type="number" placeholder="0" class="form-control" value="'+number+'">';
             }
         }
-        return table;
+        this.state = true;
+        return this.table;
     }
 
-    clear(){
-        return table;
+    remove(){
+        this.state = false;
+        return this.table;
     }
 
-    fillCell (x,y,lastCell){
-        //верхний левый угол
-        if(x === 0 && y === 0) return "";
-        //последняя колонка - Сумма
-        if(y+1 === lastCell && x !== 0) {
-            return '';
-        } else if (y+1 === lastCell && x === 0){
-            //Это заглавие
-            return '<b>Сумма</b>';
-        }
-      return x === 0 ? '<b>a<sub>'+y+'</sub></b>' : 
-               y === 0 ? '<b>Expert<sub>'+x+'</sub></b>' :
-            '<input type="number" placeholder="0" class="form-control">';
-      }
+    showInfo(){
+          console.log('Class: '+ this.className + ' | row: '
+             + this.rowNum + ' | cell: ' + this.cellNum);
+    }
 }
