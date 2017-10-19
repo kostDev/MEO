@@ -1,12 +1,17 @@
-let dataTable = document.querySelector('#mainDataTable');
+let workSpace = document.querySelector('#workSpace');
+let alTab     = document.querySelector('#altTab');
 let inputButton = document.getElementById('inputButton');
 let table; // future table
 let isTableAlt = false;
-
+let alterCount;
+var sumArr = [];
+var alterArr = [];
 // controls
+
 inputButton.onclick = function () {
 	// 2 elements takes 2 rows
-	let alterCount = parseInt(inputField.value)+2;
+	alterCount = parseInt(inputField.value)+2;
+
 	if(!isTableAlt){
 		alterCount > 3 && alterCount <= 12 ?
 		createTable(alterCount) : alert('Размер должен быть в пределе (1,12]!!!');
@@ -14,7 +19,7 @@ inputButton.onclick = function () {
 		clearTable();
 	}
 }
-
+// table.insertRow(rowNum).insertCell(cellNum);
 function createTable(alterCount) {
 	table = document.createElement('table');
 	table.setAttribute('class', 'article');
@@ -27,15 +32,17 @@ function createTable(alterCount) {
 				cell.setAttribute('id', 'Sum'+rowNum) : null;
 		}
 	}
-	dataTable.appendChild(table);
+	workSpace.appendChild(table);
 	inputButton.textContent = 'очистить';
 	isTableAlt = true;
 }
 
 function clearTable() {
-	dataTable.removeChild(table);
+	workSpace.removeChild(table);
 	inputButton.textContent = 'создать';
 	isTableAlt = false;
+
+	document.getElementById("findButton").disabled = true;
 }
 
 let fillCell = (x,y,lastCell) =>{
@@ -53,20 +60,73 @@ let fillCell = (x,y,lastCell) =>{
     	'<input type="number" placeholder="0" class="form-control">';
   }
 
+function createArr(data, size){
+	let counter = 0;
+	alterArr[counter] = new Array();
+	for(let i = 1; i<data.length;i++){
+		if(i % size != 0)
+			alterArr[counter].push((data[i].value * 1));
+		else{
+			alterArr[counter].push((data[i].value * 1));
+			counter++;
+			alterArr[counter] = new Array();
+		}
+	}
+}
+
 calcButton.onclick = function() {
 	let data = document.getElementsByTagName('input');
-	let valueArr = [];
 	let size = Math.sqrt(data.length-1);
+	createArr(data, size);
 	let temp = 0;
 	for(let i = 1; i < data.length; i++){
 		if(i % size != 0){
 			temp += (data[i].value * 1);
 		}else{
 			temp += (data[i].value * 1);
-			valueArr.push(temp);
+			sumArr.push(temp);
 			temp = 0;
 		}
 	}
 	for(let i = 1; i <= size;i++)
-		document.getElementById('Sum'+i).innerHTML = valueArr[i-1];
+		document.getElementById('Sum'+i).innerHTML = sumArr[i-1];
+
+	document.getElementById("findButton").disabled = false;
+}
+
+function createTableAlt(alterCount) {
+	let table = document.createElement('table');
+	table.setAttribute('class', 'alter');
+	let row = table.insertRow(0);
+	for (let cellNum = 0; cellNum < alterCount; cellNum++) {
+		if(cellNum > 0 && cellNum < alterCount-1){
+			let cell = row.insertCell(cellNum);
+			cell.innerHTML = '<input type="number" placeholder="number" class="form-control">';	
+		}else{
+			let cell = row.insertCell(cellNum);
+			cell.innerHTML = '<b>#####</b>';
+		}
+	}
+	altTab.appendChild(table);
+}
+
+function formula (){
+	// sumArr alterArr
+	let temp = 0;
+	let formArr = [];
+	sumArr.map((x, index) => {
+		for(let i = 0; i < alterArr[0].length ; i++){
+			console.log('number: ' + alterArr[i][index] + ' index number : '+ i);
+			if(alterArr[i][index] == 0) continue;
+			temp += ((alterArr[i][index] * 1) / (x * 1));
+		}
+		formArr.push(temp);
+		temp = 0;
+	});
+	console.log(formArr);
+}
+
+findButton.onclick = function(){
+	createTableAlt(alterCount);
+	formula();
 }
