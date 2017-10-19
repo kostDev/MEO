@@ -10,6 +10,7 @@ createMainTabBtn.onclick = function (){
     if(mainTab == null){
         createMainTabBtn.textContent = 'очистить'
         sumElemsBtn.disabled = false;
+        // className, rowNumber , cellNumber
         mainTab = new Table('myClass',3,4);
         // add new MainTab to div -> WorkSpace
         workSpace.appendChild(mainTab.create());
