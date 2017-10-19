@@ -10,7 +10,7 @@ createMainTabBtn.onclick = function (){
     if(mainTab == null){
         createMainTabBtn.textContent = 'очистить'
         sumElemsBtn.disabled = false;
-        mainTab = new Table('myClass',3,6);
+        mainTab = new Table('myClass',3,4);
         // add new MainTab to div -> WorkSpace
         workSpace.appendChild(mainTab.create());
         //mainTab.showInfo();
@@ -27,9 +27,10 @@ sumElemsBtn.onclick = function (){
     let temp = document.getElementsByTagName('input');
     let numbers = [];
     for(let i = 1; i < temp.length; i++)
-        // write in main Table obj 
-        mainTab.valueArr.push(parseInt(temp[i].value));
-    console.log(mainTab.valueArr)
+        numbers.push(parseInt(temp[i].value));
+    // make 2-d array for main Table
+    mainTab.makeTwDimensionalArr(numbers);
+    console.log(mainTab.valueArr);
 }
 
 //altTab = new Table('alternativeTable',1,6);

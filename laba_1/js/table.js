@@ -5,6 +5,7 @@ class Table{
         this.rowNum = rowNum;
         this.cellNum = cellNum;
         this.valueArr = [];
+        this.sumArr = [];
         this.table = document.createElement('table');
         this.state = false;
     }
@@ -27,6 +28,22 @@ class Table{
     remove(){
         this.state = false;
         return this.table;
+    }
+
+    makeTwDimensionalArr(arr){
+        let counter = 0;
+        this.valueArr[counter] = new Array()
+        for(let i = 0; i < arr.length; i++){
+            if(i % this.cellNum != 0 || i == 0)
+               this.valueArr[counter].push(arr[i]);
+            else{
+                if(i+1 != arr.length){
+                    ++counter;
+                    this.valueArr[counter] = new Array();
+                    this.valueArr[counter].push(arr[i]);
+                }
+            }
+        }
     }
 
     showInfo(){
