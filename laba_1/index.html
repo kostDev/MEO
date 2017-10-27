@@ -6,14 +6,17 @@
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-	<div id="workSpace">
-	<form  class="form-inline">
-		<div class="form-group" align="center">
-			<input id="inputField" type="number" name="textInput" 
-			class="form-control" placeholder="Введите кол-во альтернатив">
+	<div id="workSpace" align="center">
+	<form  class="form-inline" >
+		<div class="form-group" >
+			<!--  инпути для формул -->
+			<input id="inputExp" type="number" name="textInput" 
+			class="form-control" placeholder="Кол-во экспертов">
+			<input id="inputAlt" type="number" name="textInput" 
+			class="form-control" placeholder="Кол-во альтернатив">
+			<label class="btn btn-default" >random: <input type="checkbox" id="randCh" ></label>
 			<button id="createMainTabBtn" type="button" class="btn btn-success">создать</button>
-			<button id="sumElemsBtn" type="button" class="btn btn-primary" disabled>найти сумму</button>
-			<!--  кнопка для формулы -->
+			<button id="sumBtn" type="button" class="btn btn-primary" disabled>найти сумму</button>
 			<button id="findButton" type="button" class="btn btn-warning" disabled>рассчитать оценку</button>		
 		</div>
 	</form>

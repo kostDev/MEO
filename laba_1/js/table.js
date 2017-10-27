@@ -1,6 +1,6 @@
 class Table{
 
-    constructor(className, rowNum, cellNum){
+    constructor(className, rowNum, cellNum, useRandom){
         this.className = className;
         this.rowNum = rowNum;
         this.cellNum = cellNum;
@@ -8,6 +8,7 @@ class Table{
         this.sumArr = [];
         this.table = document.createElement('table');
         this.state = false;
+        this.useRandom = useRandom;
     }
 
     create (){
@@ -17,16 +18,16 @@ class Table{
             for (let cellNum = 0; cellNum < this.cellNum; cellNum++) {
                 let cell = row.insertCell(cellNum);
                 // max 20 min 0
-                let number = Math.floor(Math.random() * (20 - 0 + 1)) + 0;
+                let number = null;
+                if(this.useRandom)
+                    number = Math.floor(Math.random() * (20 - 0 + 1)) + 0;
                 cell.innerHTML = '<input type="number" placeholder="0" class="form-control" value="'+number+'">';
             }
         }
-        this.state = true;
         return this.table;
     }
 
     remove(){
-        this.state = false;
         return this.table;
     }
 
@@ -44,6 +45,13 @@ class Table{
                 }
             }
         }
+    }
+
+    getSumArr(){
+        this.valueArr.map(ar =>{
+            this.sumArr.push(ar.reduce((sum,el) => sum+el,0));
+        });
+        return this.sumArr;
     }
 
     showInfo(){
