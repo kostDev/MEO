@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Laba 1</title>
+	<title>Meo - Laba 1</title>
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel=icon href=favicon.ico sizes="16x16" type="image/ico">
 </head>
 <body>
 	<div id="workSpace" align="center">
@@ -11,21 +12,21 @@
 		<div class="form-group" >
 			<!--  инпути для формул -->
 			<input id="inputExp" type="number" name="textInput" 
-			class="form-control" placeholder="Кол-во экспертов">
+				class="form-control" placeholder="Кол-во экспертов">
 			<input id="inputAlt" type="number" name="textInput" 
-			class="form-control" placeholder="Кол-во альтернатив">
+				class="form-control" placeholder="Кол-во альтернатив">
 			<label class="btn btn-default" >random: <input type="checkbox" id="randCh" ></label>
 			<button id="createMainTabBtn" type="button" class="btn btn-success">создать</button>
 			<button id="sumBtn" type="button" class="btn btn-primary" disabled>найти сумму</button>
 			<button id="findButton" type="button" class="btn btn-warning" disabled>рассчитать оценку</button>		
 		</div>
 	</form>
-	<br>
+	<hr>
 	<!-- Table here -->
 	</div>
 	<hr>
 	<div id="altTab"></div>
-	<hr>
+
 
 	<script type="text/javascript" src="./js/table.js"></script>
 	<script type="text/javascript" src="./js/logic.js"></script>

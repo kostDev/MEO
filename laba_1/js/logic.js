@@ -1,6 +1,5 @@
 // main Div
 let workSpace = document.getElementById('workSpace');
-
 // Create field for  Main Table
 let mainTab = null;
 // Create field for Alternative only
@@ -11,38 +10,33 @@ createMainTabBtn.onclick = function (){
         // -------------- get input value
         let exprtCount = document.getElementById('inputExp').value;
         let altCount = document.getElementById('inputAlt').value;
-        workSpace = document.getElementById('workSpace');
         let useRandom = document.getElementById("randCh").checked;
         // ---------------------------------------
         if(exprtCount > 1 && altCount > 1 &&
            exprtCount < 13 && altCount < 13){
             createMainTabBtn.textContent = 'очистить';
             sumBtn.disabled = false;
-            // className, rowNumber , cellNumber
+            // className, rowNumber , cellNumber, useRandom
             mainTab = new Table('myClass', exprtCount, altCount, useRandom);
-            // add new MainTab to div -> WorkSpace
+            // add new table to div -> WorkSpace
             workSpace.appendChild(mainTab.create());
-            //mainTab.showInfo();
         }else alert('числа должни быть от 1 до 12');
     }else{
         createMainTabBtn.textContent = 'создать'
-        sumBtn.disabled = true;
-        clearData();        
+        clearData(); 
+        sumBtn.disabled = true;       
     }
 }
 
 function clearData(){
     // remove child mainTab from WorkSpace
-    workSpace.removeChild(mainTab.remove());
-    workSpace = null;
+    workSpace.removeChild(mainTab.table);
     mainTab = null;
     altTab = null;
     // clear inputFields
     document.getElementById('inputExp').value = null;
     document.getElementById('inputAlt').value = null;
-
 }
-
 
 sumBtn.onclick = function (){
     let temp = document.getElementsByTagName('input');
@@ -51,16 +45,18 @@ sumBtn.onclick = function (){
     // i = 0 => inputExp
     // i = 1 => inputAlt
     // i = 2 => randCh - for randomNumbers
-    for(let i = 3; i < temp.length; i++)
-        numbers.push(parseInt(temp[i].value));
-    // make 2-d array for main Table
-    mainTab.makeTwDimensionalArr(numbers);
-
-    console.log(mainTab.valueArr);
-    console.log(mainTab.getSumArr());
+    for(let i = 3; i < temp.length; i++){
+        let value = parseInt(temp[i].value);
+        if(!isNaN(value)){
+            numbers.push(value);
+        } 
+    }
+    // make 2-d array for main Table inputs
+    mainTab.make2dArr(numbers);
+    console.log('all inputs:', mainTab.valueArr);
+    //mainTab.getSumArr() uncomment if clog will be delete
+    //set value in sum ID
+    console.log('sum:', mainTab.getSumArr());
+    // save our data from repeating 
 
 }
-
-//altTab = new Table('alternativeTable',1,6);
-
-
