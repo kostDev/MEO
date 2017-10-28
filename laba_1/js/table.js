@@ -11,21 +11,27 @@ class Table{
         this.useRandom = useRandom;
         this.counter = 1;
     }
-
-    create(){
+    // atr true if it not main tab
+    create(atr=false){
+        // for the next table counter must be 0
+        atr == true ? this.counter = 0 : null;
         this.table.setAttribute('class', this.className);
         for (let rowNum = 0; rowNum < this.rowNum; rowNum++) {
             let row = this.table.insertRow(rowNum);
             for (let cellNum = 0; cellNum < this.cellNum; cellNum++) {
                 let cell = row.insertCell(cellNum);
-                // max 20 min 0
-                if(cellNum+1 != this.cellNum){
-                    let number = null;
-                    if(this.useRandom)
-                        number = Math.floor(Math.random() * (20 - 0 + 1)) + 0;
-                    cell.innerHTML = '<input type="number" placeholder="0" class="form-control" value="'+number+'">';
+                if(atr){
+                    cell.innerHTML = '<span class="form-control" disabled>'+this.valueArr[this.counter++].toFixed(5)+'</span>';
                 }else{
-                    cell.innerHTML = '<button id="'+ (this.counter++) +'" class="form-control" disabled>Summa</button>';
+                    if(cellNum+1 != this.cellNum){
+                        let number = null;
+                        if(this.useRandom)
+                            // max 20 min 0
+                            number = Math.floor(Math.random() * (20 - 0 + 1)) + 0;
+                        cell.innerHTML = '<input type="number" placeholder="0" min="0" class="form-control" value="'+number+'">';
+                    }else{
+                        cell.innerHTML = '<button id="'+ (this.counter++) +'" class="form-control" disabled>Summa</button>';
+                    }
                 }
             }
         }

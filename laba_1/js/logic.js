@@ -2,8 +2,8 @@
 let workSpace = document.getElementById('workSpace');
 // Create field for  Main Table
 let mainTab = null;
-// Create field for Alternative only
-let altTab = null;
+// Create field for Formula Tab only
+let formuleTab = null;
 
 createMainTabBtn.onclick = function (){
     if(mainTab == null){
@@ -24,18 +24,21 @@ createMainTabBtn.onclick = function (){
     }else{
         createMainTabBtn.textContent = 'создать'
         clearData(); 
-        sumBtn.disabled = true;       
     }
 }
 
 function clearData(){
     // remove child mainTab from WorkSpace
     workSpace.removeChild(mainTab.table);
+    formuleTab != null ? workSpace.removeChild(formuleTab.table) : null;
+    // clear tabs
     mainTab = null;
-    altTab = null;
+    formuleTab = null;
     // clear inputFields
     document.getElementById('inputExp').value = null;
     document.getElementById('inputAlt').value = null;
+    sumBtn.disabled = true;
+    findFormulaBtn.disabled = true; 
 }
 
 sumBtn.onclick = function (){
@@ -53,10 +56,31 @@ sumBtn.onclick = function (){
     }
     // make 2-d array for main Table inputs
     mainTab.make2dArr(numbers);
-    console.log('all inputs:', mainTab.valueArr);
-    //mainTab.getSumArr() uncomment if clog will be delete
-    //set value in sum ID
-    console.log('sum:', mainTab.getSumArr());
-    // save our data from repeating 
+    //console.log('all inputs:', mainTab.valueArr);
+    mainTab.getSumArr()
+    //console.log('sum:', mainTab.getSumArr());
+    findFormulaBtn.disabled = false;
+}
 
+findFormulaBtn.onclick = function (){
+    formuleTab != null ? clearFormulaTab() : null;
+    formuleTab = new Table('nTab', 1, mainTab.cellNum-2, false);
+    // use our formula
+    formula();
+    workSpace.appendChild(formuleTab.create(true));
+}
+function clearFormulaTab(){
+    workSpace.removeChild(formuleTab.table);
+    formuleTab = null;
+}
+
+function formula (){
+    for(let i = 0; i < mainTab.cellNum; i++)
+        formuleTab.valueArr.push(0);
+
+    mainTab.valueArr.map((arr,index) => {
+        arr.map((el,i) =>{
+            formuleTab.valueArr[i] += ( el / mainTab.sumArr[index]);
+        });
+    });
 }
