@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MEO lab_1</title>
+	<link rel="shortcut icon" href="./resources/img/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="./resources/css/style.css">
+</head>
+<body>
+
+	<div id="content">
+		<div class="tools">
+			<input type="text" name="typeExp" placeholder="Тип экспертов" required>
+			<input type="number" name="countExp" placeholder="Кол-во экспертов" min="2" required>
+			<input type="text" name="typeAlt" placeholder="Тип альтернатив" required>
+			<input type="number" name="countAlt" placeholder="Кол-во альтернатив" min="2" required>
+			<input type="number" name="minValue" placeholder="Мин - оценка" min="1" required>
+			<input type="number" name="maxValue" placeholder="Мах - оценка" min="1" required>
+		</div>
+		<div class="tools">
+			<button class="create" id="createTab">Создать</button>
+			<button class="find-sum" id="sumButton">Найти сумму</button>
+			<button class="recount" id="recountButton">Рассчитать оценку</button>
+			<label class="label-random">Random numbers: <input type="checkbox" id="useRandom" ></label>
+			<button class="label-random" id="reloadButton">Reload</button>
+		</div>
+		<div id="divForTable" align="center">
+			
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript" src="./resources/js/main.js"></script>
+</body>
+</html>

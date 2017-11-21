@@ -1,0 +1,110 @@
+.tools{
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.tools > input{
+	background-color: #5B5C56;
+	color: #B1B2AC	;
+	border-style: none;
+	border-top: 4px solid #40413D;
+	border-bottom: 4px solid  #40413D;
+	border-radius: 2px 5px;
+	padding: 10px;
+	
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+}
+.tools > input::placeholder{
+	color: #A2A39D;
+}
+
+.tools > button{
+	border-radius: 5px;
+	padding: 15px 15px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.create{
+	background-color: #88E390;
+	color: #5CB764;
+	border-style: none;
+	border-bottom: 4px solid #549D72;
+}
+.create:hover{
+	background-color: #5CB764;
+	color: #88E390;
+}
+
+.find-sum{
+	background-color: #EAC471;
+	color: #B59853;
+	border-style: none;
+	border-bottom: 4px solid #CD841E;
+}
+.find-sum:hover{
+	background-color: #B59853;
+	color: #EAC471;
+}
+
+.recount{
+	background-color: #2FABCD;
+	color: #1683A1;
+	border-style: none;
+	border-bottom: 4px solid #1A5E71;
+}
+.recount:hover{
+	background-color: #1683A1;
+	color: #2FABCD;
+}
+
+.label-random{
+	background-color: #DBDBDB;
+	color: black;
+	border-style: none;
+	border-bottom: 3px solid silver;
+	border-radius: 5px;
+	padding: 15px 15px;
+	font-size: 17px;
+	font-weight: bold;
+}
+.label-random:hover{
+	background-color: #F0F0F0;
+}
+
+#table{
+	background-color: white;
+	border-radius: 5px;
+	border: 3px solid #40413D;
+	text-align: center;
+}
+
+.table-input{
+	background-color: silver;
+	color: black;
+	padding: 5px;
+	border-style: none;
+	border-bottom: 2px solid #248E23;
+	border-radius: 2px;
+	text-align: center;
+	font-size: 15px;
+}
+/*
+.table-span-sum{
+	color: #9A8950;
+}
+.table-exp{
+	color: darkgreen;
+}
+.table-alt{
+	color: darkblue;
+}*/
+tbody > tr{
+	background-color: #5B5C56;
+	color: #9BA39D;
+	font-weight: bold;
+	font-size: 17px;
+}
