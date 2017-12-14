@@ -1,0 +1,71 @@
+body{
+	background-color: #171814;
+}
+#tools{
+	padding-top: 10%;
+}
+
+#tools > input, select{
+	text-align: center;
+	background-color: #272822;
+	color: white;
+	border-style: none;
+	border-bottom: 3px solid silver;
+	border-radius: 5px 2px;
+	width: 15%;
+	padding-top: 5px;
+	margin-right: 1%;
+	padding-bottom: 5px;
+}
+#tools > input:hover, select:hover{
+	box-shadow: 0 0 5px lightgreen;
+	border-bottom: 3px solid lightgreen;
+}
+
+#tools > #createBtn{
+	background: #3B8E30;
+	color: white;
+	border-style: none;
+	border: 2px solid #3B8E30;
+	border-radius: 3px;
+	padding: 5px;
+	width: 5%;
+}
+
+#tools > #clearBtn{
+	background: red;
+	color: white;
+	border-style: none;
+	border: 2px solid red;
+	border-radius: 3px;
+	padding: 5px;
+}
+
+#tools > #getInfoBtn{
+	background: blue;
+	color: white;
+	border-style: none;
+	border: 2px solid blue;
+	border-radius: 3px;
+	padding: 5px;
+}
+
+#tools > #createBtn:active, #clearBtn:active, #getInfoBtn:active{
+	border: 2px solid #3BAC30;
+	box-shadow: 0 0 5px silver;
+}
+
+#divForTable{
+	padding-top: 5%;
+	color: white;
+}
+
+.table-input{
+	background-color: #2A2C25;
+	color: gold;
+	font-weight: bold;
+	border-style: none;
+	padding: 5px;
+	text-align: center;
+}
+
